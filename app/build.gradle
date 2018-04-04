@@ -42,4 +42,5 @@ dependencies {
     // anko
     implementation "org.jetbrains.anko:anko-commons:${versions.anko}"
     implementation "org.jetbrains.anko:anko-sdk25:${versions.anko}"
+    implementation "org.jetbrains.anko:anko-appcompat-v7:${versions.anko}"
 }

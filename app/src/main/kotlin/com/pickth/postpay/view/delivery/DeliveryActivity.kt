@@ -19,14 +19,23 @@ package com.pickth.postpay.view.delivery
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import com.pickth.postpay.R
+import com.pickth.postpay.view.delivery.adapter.ViewPagerAdapter
+import kotlinx.android.synthetic.main.activity_delivery.*
+import kotlinx.android.synthetic.main.base_toolbar.*
 
 /**
  * Created by yonghoon on 2018-04-03
  * Blog   : http://blog.pickth.com
  */
-class DeliveryActivity: AppCompatActivity() {
+class DeliveryActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_delivery)
+
+        setSupportActionBar(toolbar_base)
+
+        val adapter = ViewPagerAdapter(supportFragmentManager)
+        vp_delivery.adapter = adapter
+
     }
 }
