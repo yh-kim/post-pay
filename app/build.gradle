@@ -27,7 +27,7 @@ dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
     // kotlin
-    implementation"org.jetbrains.kotlin:kotlin-stdlib-jre7:${versions.kotlin}"
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jre7:${versions.kotlin}"
 
     // support
     implementation "com.android.support:appcompat-v7:${versions.supportLibrary}"
@@ -35,6 +35,9 @@ dependencies {
     implementation "com.android.support:design:${versions.supportLibrary}"
     implementation "com.android.support:support-vector-drawable:${versions.supportLibrary}"
     implementation 'com.android.support.constraint:constraint-layout:1.0.2'
+
+    // logger
+    implementation "com.orhanobut:logger:${versions.logger}"
 
     // anko
     implementation "org.jetbrains.anko:anko-commons:${versions.anko}"

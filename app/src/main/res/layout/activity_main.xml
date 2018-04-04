@@ -1,71 +1,66 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
     <!-- app bar -->
-    <android.support.design.widget.AppBarLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-        <android.support.v7.widget.Toolbar
-            android:id="@+id/tb_main"
-            android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            android:background="@color/colorPrimary"
-            android:minHeight="?attr/actionBarSize" />
-
-    </android.support.design.widget.AppBarLayout>
+    <include layout="@layout/base_toolbar" />
 
     <Button
         android:id="@+id/btn_start_saving"
-        android:text="내역창(saving activity)로 이동"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:text="내역창(saving activity)로 이동" />
 
     <LinearLayout
-        android:orientation="horizontal"
-        android:weightSum="3"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="3">
+
         <Button
-            android:text="경조 송금"
-            android:layout_weight="1"
             android:layout_width="0dp"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="경조 송금" />
+
         <Button
-            android:text="간편 송금"
-            android:layout_weight="1"
             android:layout_width="0dp"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="간편 송금" />
+
         <Button
-            android:text="기부"
-            android:layout_weight="1"
             android:layout_width="0dp"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="기부" />
     </LinearLayout>
 
     <LinearLayout
-        android:orientation="horizontal"
-        android:weightSum="3"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="3">
+
         <Button
-            android:text="체크카드"
-            android:layout_weight="1"
             android:layout_width="0dp"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="체크카드" />
+
         <Button
-            android:text="수신"
-            android:layout_weight="1"
             android:layout_width="0dp"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="수신" />
+
         <Button
             android:id="@+id/btn_start_delivery"
-            android:text="현금 배송"
-            android:layout_weight="1"
             android:layout_width="0dp"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="현금 배송" />
     </LinearLayout>
 </LinearLayout>

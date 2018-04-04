@@ -6,6 +6,7 @@ import com.pickth.postpay.R
 import com.pickth.postpay.view.delivery.DeliveryActivity
 import com.pickth.postpay.view.saving.SavingActivity
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.base_toolbar.*
 import org.jetbrains.anko.startActivity
 
 class MainActivity : AppCompatActivity(), MainContract.View {
@@ -19,7 +20,7 @@ class MainActivity : AppCompatActivity(), MainContract.View {
         setContentView(R.layout.activity_main)
 
         // actionbar
-        setSupportActionBar(tb_main)
+        setSupportActionBar(toolbar_base)
 
         mPresenter = MainPresenter()
 

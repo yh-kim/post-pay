@@ -11,7 +11,9 @@ buildscript {
         versions = ['kotlin'        : '1.2.21',
                     'supportLibrary': '27.1.0',
                     'anko'          : '0.10.1',
-                    'firebase'      : '11.4.2']
+                    'firebase'      : '11.4.2',
+                    'logger'        : '2.1.1'
+        ]
     }
     repositories {
         google()
