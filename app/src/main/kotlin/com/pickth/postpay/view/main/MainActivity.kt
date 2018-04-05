@@ -1,6 +1,7 @@
 package com.pickth.postpay.view.main
 
 import android.content.Context
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.support.v4.view.GravityCompat
 import android.support.v7.app.ActionBarDrawerToggle
@@ -33,10 +34,12 @@ class MainActivity : AppCompatActivity(), MainContract.View {
 
         mPresenter = MainPresenter(this)
 
+        updateUi()
+
         ll_start_delivery.setOnClickListener {
             startActivity<DeliveryActivity>()
         }
-        fl_start_saving.setOnClickListener {
+        cv_start_saving.setOnClickListener {
             startActivity<SavingActivity>()
         }
         iv_saving_setting.setOnClickListener {
@@ -46,13 +49,18 @@ class MainActivity : AppCompatActivity(), MainContract.View {
     }
 
     override fun showSavingSettingDialog() {
-        SavingSettingDialog(this, 0, { mPresenter.setSavingPercentage(it) }).show()
+        SavingSettingDialog(this, mPresenter.getSavingPercentage(), { mPresenter.setSavingPercentage(it) }).show()
     }
 
     override fun getContext(): Context = applicationContext
 
     override fun showToast(input: String) {
         toast(input)
+    }
+
+    override fun updateUi() {
+        tv_main_saving_percentage.text = "${mPresenter.getSavingPercentage()}%"
+        tv_main_saving_money.text = "${mPresenter.getSavingMoney()}원"
     }
 
     override fun onOptionsItemSelected(item: MenuItem?): Boolean {
@@ -75,4 +83,5 @@ class MainActivity : AppCompatActivity(), MainContract.View {
 
         super.onBackPressed()
     }
+
 }

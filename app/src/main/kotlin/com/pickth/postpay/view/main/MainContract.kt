@@ -17,6 +17,7 @@
 package com.pickth.postpay.view.main
 
 import android.content.Context
+import android.content.SharedPreferences
 import com.pickth.postpay.base.mvp.BasePresenter
 import com.pickth.postpay.base.mvp.BaseView
 
@@ -26,12 +27,16 @@ import com.pickth.postpay.base.mvp.BaseView
  */
 interface MainContract {
     interface Presenter: BasePresenter {
+        fun getSavingPercentage(): Int
         fun setSavingPercentage(value: Int)
+        fun getSavingMoney(): Int
+        fun setSavingMoney(value: Int)
     }
 
     interface View: BaseView<Presenter> {
         fun getContext(): Context
         fun showSavingSettingDialog()
         fun showToast(input: String)
+        fun updateUi()
     }
 }
