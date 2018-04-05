@@ -29,6 +29,6 @@ interface MainContract {
     }
 
     interface View: BaseView<Presenter> {
-        fun showSetSavingDialog()
+        fun showSavingSettingDialog()
     }
 }

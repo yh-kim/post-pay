@@ -18,15 +18,46 @@ package com.pickth.postpay.view.saving
 
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
-import com.pickth.postpay.R
+import android.support.v7.widget.LinearLayoutManager
+import android.support.v7.widget.RecyclerView
+import android.view.Gravity
+import android.view.View
+import android.widget.LinearLayout
+import org.jetbrains.anko.textView
+import org.jetbrains.anko.verticalLayout
 
 /**
  * Created by yonghoon on 2018-04-03
  * Blog   : http://blog.pickth.com
  */
 class SavingActivity: AppCompatActivity() {
+    private lateinit var rvSaving: RecyclerView
+    private lateinit var mSavingAdapter: SavingAdapter
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_saving)
+        mSavingAdapter = SavingAdapter()
+        rvSaving = RecyclerView(this).apply {
+            layoutParams = LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.MATCH_PARENT)
+            overScrollMode = View.OVER_SCROLL_NEVER
+            isNestedScrollingEnabled = false
+            adapter = mSavingAdapter
+            layoutManager = LinearLayoutManager(this@SavingActivity, LinearLayoutManager.VERTICAL, false)
+        }
+
+        val rootView = verticalLayout {
+            gravity = Gravity.CENTER_HORIZONTAL
+            textView("15,373원") {
+                gravity = Gravity.CENTER_HORIZONTAL
+            }
+            addView(rvSaving)
+        }
+
+        setContentView(rootView)
+
+        for(i in 0..3) {
+            mSavingAdapter.addItem(Saving("4/$i", "테스트$i", (i+1)*100))
+        }
+        mSavingAdapter.notifyDataSetChanged()
     }
 }
