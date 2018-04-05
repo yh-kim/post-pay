@@ -19,46 +19,77 @@ package com.pickth.postpay.view.dialog
 import android.app.Dialog
 import android.content.Context
 import android.os.Bundle
+import android.support.v4.content.ContextCompat
 import android.text.InputType
+import android.view.Gravity
 import android.view.WindowManager
 import android.widget.EditText
 import android.widget.LinearLayout
 import android.widget.LinearLayout.LayoutParams
+import android.widget.TextView
 import com.pickth.postpay.R
+import com.pickth.postpay.extension.convertDpToPixel
+import com.pickth.postpay.extension.setBackgroundColorWithRadius
+import com.ramotion.fluidslider.FluidSlider
 import org.jetbrains.anko.*
 
 /**
  * Created by yonghoon on 2018-04-04
  * Blog   : http://blog.pickth.com
  */
-class SavingSettingDialog(context: Context, private val click:(value: Int) -> Unit): Dialog(context, R.style.AppTheme_NoTitle) {
+class SavingSettingDialog(context: Context, private var savingValue: Int, private val click:(value: Int) -> Unit): Dialog(context, R.style.AppTheme_NoTitle) {
+    private lateinit var mFluidSlider: FluidSlider
+    private var tvInput: TextView? = null
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         window.setLayout(WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.MATCH_PARENT)
+        mFluidSlider = FluidSlider(context).apply {
+            startText = "0"
+            endText = "100"
+            colorBar = ContextCompat.getColor(context, R.color.colorAccent)
+            colorBubble = ContextCompat.getColor(context, R.color.colorWhite)
+            position = savingValue.toFloat()
+            positionListener = {
+                pos -> val value = (100 * pos).toInt()
+                savingValue = value
+                bubbleText = "${value}"
+                tvInput?.text = "${value}%"
+            }
+        }
+
         setContentView(context.verticalLayout {
             layoutParams = LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT)
-            var etInput: EditText? = null
-            linearLayout {
-                layoutParams = LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT)
-                orientation = LinearLayout.HORIZONTAL
-                etInput = editText {
-                    layoutParams = LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT, 1f)
-                    inputType = InputType.TYPE_CLASS_NUMBER
+            val rootPadding = context.convertDpToPixel(9)
+            setPadding(rootPadding,0,rootPadding,0)
+
+            addView(mFluidSlider)
+
+            tvInput = textView(savingValue.toString()) {
+                layoutParams = LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT).apply {
+                    setMargins(0, context.convertDpToPixel(9), 0, context.convertDpToPixel(0))
                 }
-                textView("원")
+                textSize = context.convertDpToPixel(15).toFloat()
+                gravity = Gravity.CENTER_HORIZONTAL
             }
 
-            textView("자신이 소비할 금액의 몇 %를 저축할지에 대한 설명이 들어갑니다.") {
-                layoutParams = LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT, 1f)
-            }
+            textView(context.getString(R.string.saving_explanation)) {
+                layoutParams = LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT, 1f).apply {
+                    setMargins(context.convertDpToPixel(30), context.convertDpToPixel(30), context.convertDpToPixel(30), context.convertDpToPixel(30))
+                }
+                setPadding(context.convertDpToPixel(12), 0, context.convertDpToPixel(12), 0)
+                gravity = Gravity.CENTER
+            }.setBackgroundColorWithRadius(ContextCompat.getColor(context, R.color.colorWhite), ContextCompat.getColor(context, R.color.colorAccent), context.convertDpToPixel(12))
+
             button("저장") {
+                layoutParams = LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT).apply {
+                    setMargins(context.convertDpToPixel(30), 0, context.convertDpToPixel(30), context.convertDpToPixel(30))
+                }
                 setOnClickListener {
-                    if(!etInput?.text.isNullOrBlank()) {
-                        click(etInput!!.text.toString().toInt())
-                    }
+                    click(savingValue)
                     dismiss()
                 }
-            }
+            }.setBackgroundColorWithRadius(ContextCompat.getColor(context, R.color.colorWhite), ContextCompat.getColor(context, R.color.colorAccent), context.convertDpToPixel(12))
         })
     }
 }

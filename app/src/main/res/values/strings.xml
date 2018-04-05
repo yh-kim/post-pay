@@ -1,3 +1,15 @@
 <resources>
     <string name="app_name">PostPay</string>
+
+    <string name="main_menu1">경조 송금</string>
+    <string name="main_menu2">간편 송금</string>
+    <string name="main_menu3">기부</string>
+    <string name="main_menu4">체크카드</string>
+    <string name="main_menu5">수신</string>
+    <string name="main_menu6">현금 배송</string>
+
+    <string name="saving_explanation">자신이 소비할 금액의 몇 %를 저축할지에 대한 설명이 들어갑니다. (ex, 15% 설정 1만원 소비 시 1500원 저축 : 총 11500원 결제)</string>
+
+    <string name="nav_open">open</string>
+    <string name="nav_close">close</string>
 </resources>
