@@ -15,9 +15,14 @@
  */
 
 package com.pickth.postpay.view.main
+
 /**
  * Created by yonghoon on 2018-04-03
  * Blog   : http://blog.pickth.com
  */
-class MainPresenter: MainContract.Presenter {
+class MainPresenter(private val mView: MainContract.View): MainContract.Presenter {
+
+    override fun setSavingPercentage(value: Int) {
+        mView.showToast("${value}가 저장 되었습니다.")
+    }
 }

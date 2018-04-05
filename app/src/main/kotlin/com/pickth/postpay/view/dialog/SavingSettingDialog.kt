@@ -19,40 +19,44 @@ package com.pickth.postpay.view.dialog
 import android.app.Dialog
 import android.content.Context
 import android.os.Bundle
-import android.view.Gravity
-import android.view.ViewGroup
+import android.text.InputType
 import android.view.WindowManager
+import android.widget.EditText
 import android.widget.LinearLayout
+import android.widget.LinearLayout.LayoutParams
+import com.pickth.postpay.R
 import org.jetbrains.anko.*
 
 /**
  * Created by yonghoon on 2018-04-04
  * Blog   : http://blog.pickth.com
  */
-class SavingSettingDialog(context: Context): Dialog(context) {
+class SavingSettingDialog(context: Context, private val click:(value: Int) -> Unit): Dialog(context, R.style.AppTheme_NoTitle) {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        window.run {
-            setLayout(WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.MATCH_PARENT)
-//            setGravity(Gravity.CENTER)
-//            setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE)
-        }
-
+        window.setLayout(WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.MATCH_PARENT)
         setContentView(context.verticalLayout {
-            layoutParams = ViewGroup.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.MATCH_PARENT)
+            layoutParams = LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT)
+            var etInput: EditText? = null
             linearLayout {
-                layoutParams = ViewGroup.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT)
+                layoutParams = LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT)
                 orientation = LinearLayout.HORIZONTAL
-                editText {
-                    width = 0
+                etInput = editText {
+                    layoutParams = LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT, 1f)
+                    inputType = InputType.TYPE_CLASS_NUMBER
                 }
                 textView("원")
             }
 
-            textView("자신이 소비할 금액의 몇 %를 저축할지에 대한 설명이 들어갑니다.")
+            textView("자신이 소비할 금액의 몇 %를 저축할지에 대한 설명이 들어갑니다.") {
+                layoutParams = LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT, 1f)
+            }
             button("저장") {
                 setOnClickListener {
-
+                    if(!etInput?.text.isNullOrBlank()) {
+                        click(etInput!!.text.toString().toInt())
+                    }
+                    dismiss()
                 }
             }
         })

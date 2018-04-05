@@ -1,5 +1,6 @@
 package com.pickth.postpay.view.main
 
+import android.content.Context
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import com.pickth.postpay.R
@@ -9,11 +10,9 @@ import com.pickth.postpay.view.saving.SavingActivity
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.base_toolbar.*
 import org.jetbrains.anko.startActivity
+import org.jetbrains.anko.toast
 
 class MainActivity : AppCompatActivity(), MainContract.View {
-    override fun showSavingSettingDialog() {
-        SavingSettingDialog(this).show()
-    }
 
     private lateinit var mPresenter: MainContract.Presenter
 
@@ -24,7 +23,7 @@ class MainActivity : AppCompatActivity(), MainContract.View {
         // actionbar
         setSupportActionBar(toolbar_base)
 
-        mPresenter = MainPresenter()
+        mPresenter = MainPresenter(this)
 
         btn_start_delivery.setOnClickListener {
             startActivity<DeliveryActivity>()
@@ -35,5 +34,15 @@ class MainActivity : AppCompatActivity(), MainContract.View {
         iv_saving_setting.setOnClickListener {
             showSavingSettingDialog()
         }
+    }
+
+    override fun showSavingSettingDialog() {
+        SavingSettingDialog(this, { mPresenter.setSavingPercentage(it) }).show()
+    }
+
+    override fun getContext(): Context = applicationContext
+
+    override fun showToast(input: String) {
+        toast(input)
     }
 }
