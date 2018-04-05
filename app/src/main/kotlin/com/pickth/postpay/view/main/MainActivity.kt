@@ -20,6 +20,7 @@ import org.jetbrains.anko.toast
 class MainActivity : AppCompatActivity(), MainContract.View {
 
     private lateinit var mPresenter: MainContract.Presenter
+    private lateinit var mSavingSettingDialog: SavingSettingDialog
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -35,6 +36,7 @@ class MainActivity : AppCompatActivity(), MainContract.View {
         mPresenter = MainPresenter(this)
 
         updateUi()
+        mSavingSettingDialog = SavingSettingDialog(this, mPresenter.getSavingPercentage(), { mPresenter.setSavingPercentage(it) })
 
         ll_start_delivery.setOnClickListener {
             startActivity<DeliveryActivity>()
@@ -49,7 +51,7 @@ class MainActivity : AppCompatActivity(), MainContract.View {
     }
 
     override fun showSavingSettingDialog() {
-        SavingSettingDialog(this, mPresenter.getSavingPercentage(), { mPresenter.setSavingPercentage(it) }).show()
+        mSavingSettingDialog.show()
     }
 
     override fun getContext(): Context = applicationContext
