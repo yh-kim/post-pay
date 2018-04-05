@@ -24,31 +24,31 @@ import android.content.Context
  */
 object SavingDataManager {
 
-    private val POSTPAY = "9999"
-    private val SAVING_PERCENTAGE = "9990"
-    private val SAVING_MONEY = "9991"
+    private const val POST_PAY = "9999"
+    private const val SAVING_PERCENTAGE = "9990"
+    private const val SAVING_MONEY = "9991"
 
     fun getSavingPercentage(context: Context) = context.applicationContext
-            .getSharedPreferences(POSTPAY, Context.MODE_PRIVATE)
+            .getSharedPreferences(POST_PAY, Context.MODE_PRIVATE)
             .getString(SAVING_PERCENTAGE, "0")
             .toInt()
 
     fun setSavingPercentage(context: Context, value: Int) {
         context.applicationContext
-                .getSharedPreferences(POSTPAY, Context.MODE_PRIVATE)
+                .getSharedPreferences(POST_PAY, Context.MODE_PRIVATE)
                 .edit()
                 .putString(SAVING_PERCENTAGE, value.toString())
                 .apply()
     }
 
     fun getSavingMoney(context: Context) = context.applicationContext
-            .getSharedPreferences(POSTPAY, Context.MODE_PRIVATE)
+            .getSharedPreferences(POST_PAY, Context.MODE_PRIVATE)
             .getString(SAVING_MONEY, "0")
             .toInt()
 
     fun setSavingMoney(context: Context, value: Int) {
         context.applicationContext
-                .getSharedPreferences(POSTPAY, Context.MODE_PRIVATE)
+                .getSharedPreferences(POST_PAY, Context.MODE_PRIVATE)
                 .edit()
                 .putString(SAVING_MONEY, value.toString())
                 .apply()

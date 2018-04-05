@@ -1,8 +1,3 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <item name="edt_one_time_money" type="id"></item>
-    <item name="edt_one_time_receiver" type="id"></item>
-    <item name="txt_one_time_sum" type="id"></item>
-    <item name="txt_one_time_total" type="id"></item>
-    <item name="btn_one_time_payment" type="id"></item>
 </resources>
