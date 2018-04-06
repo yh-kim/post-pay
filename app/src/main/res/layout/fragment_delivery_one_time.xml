@@ -193,9 +193,9 @@
             android:id="@+id/btn_foreign_payment"
             android:layout_width="match_parent"
             android:layout_height="48dp"
-            android:background="@color/colorRed"
+            android:background="@color/colorPrimary"
             android:text="송금하기"
-            android:textColor="@color/colorPrimary"
+            android:textColor="@color/colorWhite"
             android:textStyle="bold" />
 
     </LinearLayout>
