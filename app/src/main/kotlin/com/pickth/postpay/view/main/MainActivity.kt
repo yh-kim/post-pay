@@ -2,12 +2,14 @@ package com.pickth.postpay.view.main
 
 import android.content.Context
 import android.os.Bundle
+import android.support.design.widget.BottomSheetBehavior
 import android.support.v4.view.GravityCompat
 import android.support.v7.app.ActionBarDrawerToggle
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.GridLayoutManager
 import android.support.v7.widget.LinearLayoutManager
 import android.view.MenuItem
+import android.view.View
 import com.pickth.postpay.R
 import com.pickth.postpay.utils.GridSpacingItemDecoration
 import com.pickth.postpay.utils.LinearSpacingItemDecoration
@@ -20,6 +22,7 @@ import com.pickth.postpay.view.saving.SavingActivity
 import com.pickth.postpay.view.sending.SendingActivity
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.base_toolbar.*
+import kotlinx.android.synthetic.main.view_bottom_sheet.*
 import kotlinx.android.synthetic.main.view_navigation.*
 import org.jetbrains.anko.startActivity
 import org.jetbrains.anko.toast
@@ -28,6 +31,19 @@ class MainActivity : AppCompatActivity(), MainContract.View {
 
     private lateinit var mPresenter: MainContract.Presenter
     private lateinit var mSavingSettingDialog: SavingSettingDialog
+
+    private val images = ArrayList<String>().apply {
+        add("https://image.epost.go.kr/epostshop/banner/201705/16/20170516034932555.jpg")
+        add("https://image.epost.go.kr/epostshop/banner/201804/05/20180405070208946.jpg")
+        add("https://image.epost.go.kr/epostshop/banner/201804/06/20180406115020186.jpg")
+        add("https://image.epost.go.kr/epostshop/banner/201804/05/20180405065315580.jpg")
+        add("https://image.epost.go.kr/epostshop/banner/201804/05/20180405065903608.jpg")
+        add("https://image.epost.go.kr/epostshop/banner/201804/05/20180405065219327.jpg")
+        add("https://image.epost.go.kr/epostshop/banner/201804/06/20180406040205205.jpg")
+        add("https://image.epost.go.kr/epostshop/banner/201804/05/20180405065949604.jpg")
+        add("https://image.epost.go.kr/epostshop/banner/201804/05/20180405070337980.jpg")
+        add("https://image.epost.go.kr/epostshop/banner/201804/05/20180405070059241.jpg")
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -41,6 +57,18 @@ class MainActivity : AppCompatActivity(), MainContract.View {
         mDrawerToggle.syncState()
 
         mPresenter = MainPresenter(this)
+
+        initBottomSheet()
+
+        ArrayList<String>().apply {
+            while (size < 4) {
+                val url = images[(Math.random()*images.size).toInt()]
+                if(!contains(url)) {
+                    add(url)
+                }
+            }
+            ims_main.addItems(this)
+        }
 
         mSavingSettingDialog = SavingSettingDialog(this, mPresenter.getSavingPercentage(), { mPresenter.setSavingPercentage(it) })
 
@@ -76,6 +104,28 @@ class MainActivity : AppCompatActivity(), MainContract.View {
             showSavingSettingDialog()
         }
         ll_nav.setOnClickListener { }
+    }
+
+    private fun initBottomSheet() {
+        val behavior = BottomSheetBehavior.from(bottom_sheet)
+
+        iv_fab.setOnClickListener { _ ->
+            if (behavior.state == BottomSheetBehavior.STATE_COLLAPSED) {
+                behavior.state = BottomSheetBehavior.STATE_EXPANDED
+            } else {
+                behavior.state = BottomSheetBehavior.STATE_COLLAPSED
+            }
+        }
+
+        behavior?.setBottomSheetCallback(object : BottomSheetBehavior.BottomSheetCallback() {
+            override fun onSlide(bottomSheet: View, slideOffset: Float) {
+            }
+
+            override fun onStateChanged(bottomSheet: View, newState: Int) {
+                when (newState) {
+                }
+            }
+        })
     }
 
     override fun showSavingSettingDialog() {
