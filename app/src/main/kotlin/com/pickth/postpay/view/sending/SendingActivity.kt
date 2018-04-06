@@ -6,6 +6,7 @@ import android.view.View
 import android.widget.Toast
 import com.pickth.postpay.R
 import com.pickth.postpay.manager.SavingDataManager
+import com.pickth.postpay.manager.SavingNotificationManager
 import kotlinx.android.synthetic.main.activity_sending.*
 import kotlinx.android.synthetic.main.base_toolbar.*
 import org.jetbrains.anko.toast
@@ -29,6 +30,7 @@ class SendingActivity : AppCompatActivity() {
                 val sending = Integer.parseInt(edt_sending.text.toString())
                 var saving = sending * per / 100
                 SavingDataManager.setSavingMoney(applicationContext, SavingDataManager.getSavingMoney(applicationContext) + saving)
+                SavingNotificationManager.sendingNoti(applicationContext, "추가 저축 금액" , saving)
                 finish()
             }
         }
