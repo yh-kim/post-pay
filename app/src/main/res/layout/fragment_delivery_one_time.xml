@@ -6,11 +6,10 @@
     <EditText
         android:id="@+id/edt_one_time_send_money"
         android:layout_width="match_parent"
-        android:layout_height="36dp"
+        android:layout_height="wrap_content"
         android:layout_marginLeft="4dp"
         android:layout_marginRight="4dp"
         android:layout_marginTop="8dp"
-        android:background="@drawable/round_corner"
         android:hint="금액을 입력하세요."
         android:inputType="number"
         android:paddingLeft="8dp"
@@ -26,7 +25,6 @@
         android:layout_marginLeft="4dp"
         android:layout_marginRight="4dp"
         android:layout_marginTop="8dp"
-        android:background="@drawable/round_corner"
         android:hint="받는 사람"
         android:paddingLeft="8dp"
         android:textAlignment="center"
@@ -41,7 +39,6 @@
         android:layout_marginLeft="4dp"
         android:layout_marginRight="4dp"
         android:layout_marginTop="8dp"
-        android:background="@drawable/round_corner"
         android:hint="배달 희망일"
         android:textAlignment="center"
         android:textSize="24sp" />
