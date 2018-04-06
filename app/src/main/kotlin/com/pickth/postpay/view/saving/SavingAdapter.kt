@@ -23,6 +23,8 @@ import android.view.View
 import android.view.ViewGroup
 import com.pickth.postpay.R
 import com.pickth.postpay.extension.convertDpToPixel
+import com.pickth.postpay.manager.SavingDataManager
+import kotlinx.android.synthetic.main.header_saving.view.*
 import kotlinx.android.synthetic.main.item_saving.view.*
 import org.jetbrains.anko.backgroundDrawable
 import org.jetbrains.anko.backgroundResource
@@ -34,17 +36,40 @@ import java.util.ArrayList
  * Blog   : http://blog.pickth.com
  */
 class SavingAdapter: RecyclerView.Adapter<SavingAdapter.SavingViewHolder>() {
+    companion object {
+        val SAVING_HEADER = 99
+        val SAVING_ITEM = 100
+    }
+
     val mItems = ArrayList<Saving>()
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SavingViewHolder {
-        val rootView = LayoutInflater.from(parent.context)
-                .inflate(R.layout.item_saving, parent, false)
+        var rootView: View
+        if(viewType == SAVING_HEADER) {
+            rootView = LayoutInflater.from(parent.context)
+                    .inflate(R.layout.header_saving, parent, false)
+        } else {
+            rootView = LayoutInflater.from(parent.context)
+                    .inflate(R.layout.item_saving, parent, false)
+        }
         return SavingViewHolder(rootView)
     }
 
-    override fun getItemCount(): Int = mItems.size
+    override fun getItemCount(): Int = mItems.size + 1
 
     override fun onBindViewHolder(holder: SavingViewHolder, position: Int) {
-        holder.onBind(mItems[position], position)
+        if(position != 0) {
+            holder.onBind(mItems[position-1], position-1)
+        } else {
+            holder.onBindHeader()
+        }
+    }
+
+    override fun getItemViewType(position: Int): Int {
+        if(position == 0) {
+            return SAVING_HEADER
+        } else {
+            return SAVING_ITEM
+        }
     }
 
     fun addItem(saving: Saving) {
@@ -52,6 +77,14 @@ class SavingAdapter: RecyclerView.Adapter<SavingAdapter.SavingViewHolder>() {
     }
 
     class SavingViewHolder(view: View): RecyclerView.ViewHolder(view) {
+        fun onBindHeader() {
+            with(itemView) {
+                tv_saving_percentage.text = SavingDataManager.getSavingPercentage(context).toString() + "%"
+
+                tv_saving_money.text = SavingDataManager.getSavingMoney(context).toString() + "원"
+            }
+        }
+
         fun onBind(saving: Saving, position: Int) {
             with(itemView) {
                 iv_saving_icon.backgroundResource = saving.image

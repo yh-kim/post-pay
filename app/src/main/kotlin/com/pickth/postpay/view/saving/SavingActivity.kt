@@ -59,7 +59,7 @@ class SavingActivity: AppCompatActivity() {
             adapter = mSavingAdapter
             addItemDecoration(LinearSpacingItemDecoration(context, 4, false))
             layoutManager = LinearLayoutManager(this@SavingActivity, LinearLayoutManager.VERTICAL, false)
-            recycledViewPool.setMaxRecycledViews(0, 0)
+            recycledViewPool.setMaxRecycledViews(SavingAdapter.SAVING_ITEM, 0)
         }
 
 
@@ -77,11 +77,6 @@ class SavingActivity: AppCompatActivity() {
                 setHomeAsUpIndicator(R.drawable.ic_back)
                 setDisplayHomeAsUpEnabled(true)
             }
-
-            // saving
-            addView(LayoutInflater.from(applicationContext).inflate(R.layout.header_saving, this, false).apply {
-                tv_saving_money.text = SavingDataManager.getSavingMoney(context).toString() + " 원"
-            })
 
             // rv
             addView(rvSaving)
