@@ -20,6 +20,7 @@ class SendingActivity : AppCompatActivity() {
         setContentView(R.layout.activity_sending)
 
         // actionbar
+        toolbar_base.setTitle("간편송금")
         setSupportActionBar(toolbar_base)
 
         btn_sending.setOnClickListener {
