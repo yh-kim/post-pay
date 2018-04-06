@@ -15,4 +15,6 @@
     <color name="colorIconGray">#F45B4D</color>
 
     <color name="colorWhiteGray">#EEEEEE</color>
+
+    <color name="colorMainIconGray">#BDBDBD</color>
 </resources>

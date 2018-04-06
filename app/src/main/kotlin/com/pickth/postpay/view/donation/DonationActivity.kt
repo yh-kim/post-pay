@@ -1,27 +1,25 @@
-package com.pickth.postpay.view.sending
+package com.pickth.postpay.view.donation
 
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.view.MenuItem
-import android.view.View
-import android.widget.Toast
 import com.pickth.postpay.R
 import com.pickth.postpay.manager.SavingDataManager
 import com.pickth.postpay.manager.SavingNotificationManager
-import kotlinx.android.synthetic.main.activity_sending.*
+import kotlinx.android.synthetic.main.activity_donation.*
 import kotlinx.android.synthetic.main.base_toolbar.*
 import org.jetbrains.anko.toast
 
 /**
  * Created by HaEun on 2018-04-06.
  */
-class SendingActivity : AppCompatActivity() {
+class DonationActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_sending)
+        setContentView(R.layout.activity_donation)
 
         // actionbar
-        toolbar_base.setTitle("간편송금")
+        toolbar_base.setTitle("기부")
         setSupportActionBar(toolbar_base)
         supportActionBar?.run {
             setHomeAsUpIndicator(R.drawable.ic_back)
@@ -31,7 +29,7 @@ class SendingActivity : AppCompatActivity() {
         btn_sending.setOnClickListener {
             val per = SavingDataManager.getSavingPercentage(this)
             if (edt_sending.text.isBlank()) {
-                toast("금액을 입력해주세요")
+                toast("기부할 금액을 입력해주세요")
             }else {
                 val sending = Integer.parseInt(edt_sending.text.toString())
                 var saving = sending * per / 100

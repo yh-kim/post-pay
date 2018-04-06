@@ -7,24 +7,37 @@
     android:background="@color/colorWhiteGray"
     android:orientation="vertical">
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="start"
+        android:layout_marginBottom="9dp"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="30dp"
+        android:clickable="false"
+        android:focusable="false"
+        android:longClickable="false"
+        android:text="Post Pay"
+        android:textColor="@color/colorPrimary"
+        android:textSize="24dp"
+        android:textStyle="bold" />
+
     <android.support.v7.widget.RecyclerView
         android:id="@+id/rv_main_nav"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="0.7">
-
-    </android.support.v7.widget.RecyclerView>
+        android:layout_height="wrap_content"
+        android:overScrollMode="never" />
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="0.3">
+        android:layout_weight="1"
+        android:paddingTop="36dp">
 
         <TextView
-            android:text="포인트를 넣을까 광고를 넣을까"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />w
-
+            android:layout_height="wrap_content"
+            android:text="포인트를 넣을까 광고를 넣을까" />
     </RelativeLayout>
 
 </LinearLayout>

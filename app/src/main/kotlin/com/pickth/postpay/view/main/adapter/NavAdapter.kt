@@ -21,7 +21,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.pickth.postpay.R
-import kotlinx.android.synthetic.main.item_menu.view.*
 import kotlinx.android.synthetic.main.item_navigation.view.*
 import org.jetbrains.anko.backgroundResource
 import java.util.*
@@ -32,12 +31,12 @@ import java.util.*
  */
 class NavAdapter(private val itemClickListener:(pos: Int) -> Unit) : RecyclerView.Adapter<NavAdapter.MenuViewHolder>() {
     private var mIcons = ArrayList<Int>().apply {
+        add(R.drawable.ic_menu0)
         add(R.drawable.ic_menu1)
         add(R.drawable.ic_menu2)
         add(R.drawable.ic_menu3)
         add(R.drawable.ic_menu4)
         add(R.drawable.ic_menu5)
-        add(R.drawable.ic_menu6)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MenuViewHolder =

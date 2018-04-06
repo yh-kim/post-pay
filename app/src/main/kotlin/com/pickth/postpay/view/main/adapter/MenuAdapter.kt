@@ -31,12 +31,12 @@ import java.util.*
  */
 class MenuAdapter(private val itemClickListener:(pos: Int) -> Unit) : RecyclerView.Adapter<MenuAdapter.MenuViewHolder>() {
     private var mIcons = ArrayList<Int>().apply {
+        add(R.drawable.ic_menu0)
         add(R.drawable.ic_menu1)
         add(R.drawable.ic_menu2)
         add(R.drawable.ic_menu3)
         add(R.drawable.ic_menu4)
         add(R.drawable.ic_menu5)
-        add(R.drawable.ic_menu6)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MenuViewHolder =

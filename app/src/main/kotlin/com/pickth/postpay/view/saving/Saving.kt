@@ -19,4 +19,4 @@ package com.pickth.postpay.view.saving
  * Created by yonghoon on 2018-04-05
  * Blog   : http://blog.pickth.com
  */
-data class Saving(var date:String, var name:String, var price: Int)
+data class Saving(var image: Int, var date:String, var name:String, var price: Int)

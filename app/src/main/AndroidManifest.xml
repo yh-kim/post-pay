@@ -20,7 +20,7 @@
         </activity>
         <activity android:name=".view.saving.SavingActivity" />
         <activity android:name=".view.delivery.DeliveryActivity" />
-        <activity android:name=".view.sending.SendingActivity" />
+        <activity android:name=".view.donation.DonationActivity" />
         <activity android:name=".view.receiving.ReceivingActivity" />
     </application>
 

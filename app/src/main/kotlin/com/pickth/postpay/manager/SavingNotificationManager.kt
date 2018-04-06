@@ -28,7 +28,7 @@ object SavingNotificationManager {
             setAutoCancel(true)
             setTicker("tt")
             setContentTitle(title)
-            setContentText(Integer.toString(saving))
+            setContentText(Integer.toString(saving) + "원")
             setDefaults(Notification.DEFAULT_LIGHTS or Notification.DEFAULT_SOUND)
             setContentIntent(resultPendingIntent)
             setWhen(System.currentTimeMillis())

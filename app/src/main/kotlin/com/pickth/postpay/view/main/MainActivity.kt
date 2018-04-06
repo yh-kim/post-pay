@@ -19,7 +19,7 @@ import com.pickth.postpay.view.main.adapter.MenuAdapter
 import com.pickth.postpay.view.main.adapter.NavAdapter
 import com.pickth.postpay.view.receiving.ReceivingActivity
 import com.pickth.postpay.view.saving.SavingActivity
-import com.pickth.postpay.view.sending.SendingActivity
+import com.pickth.postpay.view.donation.DonationActivity
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.base_toolbar.*
 import kotlinx.android.synthetic.main.view_bottom_sheet.*
@@ -75,7 +75,7 @@ class MainActivity : AppCompatActivity(), MainContract.View {
         rv_main_menu.run {
             adapter = MenuAdapter({
                 when (it) {
-                    2 -> startActivity<SendingActivity>()
+                    2 -> startActivity<DonationActivity>()
                     4 -> startActivity<ReceivingActivity>()
                     5 -> startActivity<DeliveryActivity>()
                 }
@@ -87,7 +87,7 @@ class MainActivity : AppCompatActivity(), MainContract.View {
         rv_main_nav.run {
             adapter = NavAdapter({
                 when (it) {
-                    2 -> startActivity<SendingActivity>()
+                    2 -> startActivity<DonationActivity>()
                     4 -> startActivity<ReceivingActivity>()
                     5 -> startActivity<DeliveryActivity>()
                 }

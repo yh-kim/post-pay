@@ -22,6 +22,8 @@ import android.view.View
 import android.view.ViewGroup
 import com.pickth.postpay.R
 import kotlinx.android.synthetic.main.item_saving.view.*
+import org.jetbrains.anko.backgroundDrawable
+import org.jetbrains.anko.backgroundResource
 import java.util.ArrayList
 
 /**
@@ -49,6 +51,7 @@ class SavingAdapter: RecyclerView.Adapter<SavingAdapter.SavingViewHolder>() {
     class SavingViewHolder(view: View): RecyclerView.ViewHolder(view) {
         fun onBind(saving: Saving, position: Int) {
             with(itemView) {
+                iv_saving_icon.backgroundResource = saving.image
                 saving_date.text = saving.date
                 saving_name.text = saving.name
                 saving_price.text = saving.price.toString()

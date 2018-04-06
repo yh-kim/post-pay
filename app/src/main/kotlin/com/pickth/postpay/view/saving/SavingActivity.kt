@@ -41,6 +41,12 @@ import org.jetbrains.anko.verticalLayout
 class SavingActivity: AppCompatActivity() {
     private lateinit var rvSaving: RecyclerView
     private lateinit var mSavingAdapter: SavingAdapter
+    val icons = ArrayList<Int>().apply {
+        add(R.drawable.ic_category_hamburger)
+        add(R.drawable.ic_category_chicken)
+        add(R.drawable.ic_category_coffe)
+        add(R.drawable.ic_category_meat)
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -51,7 +57,7 @@ class SavingActivity: AppCompatActivity() {
             overScrollMode = View.OVER_SCROLL_NEVER
             isNestedScrollingEnabled = false
             adapter = mSavingAdapter
-            addItemDecoration(LinearSpacingItemDecoration(context, 1, false))
+            addItemDecoration(LinearSpacingItemDecoration(context, 4, false))
             layoutManager = LinearLayoutManager(this@SavingActivity, LinearLayoutManager.VERTICAL, false)
         }
 
@@ -63,7 +69,7 @@ class SavingActivity: AppCompatActivity() {
             // actionbar
             val baseToolbar = LayoutInflater.from(context)
                     .inflate(R.layout.base_toolbar, this, false)
-            baseToolbar.toolbar_base.setTitle("저축내역")
+            baseToolbar.toolbar_base.setTitle("저축 내역")
             addView(baseToolbar)
             setSupportActionBar(baseToolbar.toolbar_base)
             supportActionBar?.run {
@@ -73,7 +79,7 @@ class SavingActivity: AppCompatActivity() {
 
             // saving
             addView(LayoutInflater.from(applicationContext).inflate(R.layout.header_saving, this, false).apply {
-                tv_saving_money.text = SavingDataManager.getSavingMoney(context).toString()
+                tv_saving_money.text = SavingDataManager.getSavingMoney(context).toString() + " 원"
             })
 
             // rv
@@ -83,7 +89,7 @@ class SavingActivity: AppCompatActivity() {
         setContentView(rootView)
 
         for(i in 0..15) {
-            mSavingAdapter.addItem(Saving("4/$i", "테스트$i", (i+1)*100))
+            mSavingAdapter.addItem(Saving(icons[i%icons.size],"4/$i", "테스트$i", (i+1)*100))
         }
         mSavingAdapter.notifyDataSetChanged()
     }
