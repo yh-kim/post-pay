@@ -15,6 +15,7 @@ import com.pickth.postpay.view.delivery.DeliveryActivity
 import com.pickth.postpay.view.dialog.SavingSettingDialog
 import com.pickth.postpay.view.main.adapter.MenuAdapter
 import com.pickth.postpay.view.saving.SavingActivity
+import com.pickth.postpay.view.sending.SendingActivity
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.base_toolbar.*
 import kotlinx.android.synthetic.main.view_navigation.*
@@ -40,15 +41,13 @@ class MainActivity : AppCompatActivity(), MainContract.View {
 
         mPresenter = MainPresenter(this)
 
-        updateUi()
         mSavingSettingDialog = SavingSettingDialog(this, mPresenter.getSavingPercentage(), { mPresenter.setSavingPercentage(it) })
 
         rv_main_menu.run {
             adapter = MenuAdapter({
                 when(it) {
-                    5 -> {
-                        startActivity<DeliveryActivity>()
-                    }
+                    1 -> startActivity<SendingActivity>()
+                    5 -> startActivity<DeliveryActivity>()
                 }
             })
             layoutManager = GridLayoutManager(context, 3)
@@ -98,6 +97,11 @@ class MainActivity : AppCompatActivity(), MainContract.View {
         }
 
         super.onBackPressed()
+    }
+
+    override fun onResume() {
+        super.onResume()
+        updateUi()
     }
 
 }

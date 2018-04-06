@@ -27,6 +27,7 @@ import android.widget.LinearLayout
 import android.widget.LinearLayout.LayoutParams
 import com.pickth.postpay.R
 import com.pickth.postpay.extension.convertDpToPixel
+import com.pickth.postpay.manager.SavingDataManager
 import com.pickth.postpay.utils.LinearSpacingItemDecoration
 import org.jetbrains.anko.backgroundColor
 import org.jetbrains.anko.textView
@@ -55,7 +56,8 @@ class SavingActivity: AppCompatActivity() {
         val rootView = verticalLayout {
             gravity = Gravity.CENTER_HORIZONTAL
             backgroundColor = ContextCompat.getColor(context, R.color.colorBackGray)
-            textView("15,373") {
+            textView {
+                text = SavingDataManager.getSavingMoney(context).toString()
                 layoutParams = LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT).apply {
                     setMargins(0, convertDpToPixel(20), 0 ,convertDpToPixel(20))
                 }
