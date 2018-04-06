@@ -22,15 +22,16 @@ import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
 import android.view.Gravity
+import android.view.LayoutInflater
+import android.view.MenuItem
 import android.view.View
-import android.widget.LinearLayout
 import android.widget.LinearLayout.LayoutParams
 import com.pickth.postpay.R
-import com.pickth.postpay.extension.convertDpToPixel
 import com.pickth.postpay.manager.SavingDataManager
 import com.pickth.postpay.utils.LinearSpacingItemDecoration
+import kotlinx.android.synthetic.main.base_toolbar.view.*
+import kotlinx.android.synthetic.main.header_saving.view.*
 import org.jetbrains.anko.backgroundColor
-import org.jetbrains.anko.textView
 import org.jetbrains.anko.verticalLayout
 
 /**
@@ -46,24 +47,36 @@ class SavingActivity: AppCompatActivity() {
         mSavingAdapter = SavingAdapter()
         rvSaving = RecyclerView(this).apply {
             layoutParams = LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT)
+            backgroundColor = ContextCompat.getColor(context, R.color.colorBackGray)
             overScrollMode = View.OVER_SCROLL_NEVER
             isNestedScrollingEnabled = false
             adapter = mSavingAdapter
-            addItemDecoration(LinearSpacingItemDecoration(context, 7, false))
+            addItemDecoration(LinearSpacingItemDecoration(context, 1, false))
             layoutManager = LinearLayoutManager(this@SavingActivity, LinearLayoutManager.VERTICAL, false)
         }
+
 
         val rootView = verticalLayout {
             gravity = Gravity.CENTER_HORIZONTAL
             backgroundColor = ContextCompat.getColor(context, R.color.colorBackGray)
-            textView {
-                text = SavingDataManager.getSavingMoney(context).toString()
-                layoutParams = LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT).apply {
-                    setMargins(0, convertDpToPixel(20), 0 ,convertDpToPixel(20))
-                }
-                gravity = Gravity.CENTER_HORIZONTAL
-                textSize = convertDpToPixel(16).toFloat()
+
+            // actionbar
+            val baseToolbar = LayoutInflater.from(context)
+                    .inflate(R.layout.base_toolbar, this, false)
+            baseToolbar.toolbar_base.setTitle("저축내역")
+            addView(baseToolbar)
+            setSupportActionBar(baseToolbar.toolbar_base)
+            supportActionBar?.run {
+                setHomeAsUpIndicator(R.drawable.ic_back)
+                setDisplayHomeAsUpEnabled(true)
             }
+
+            // saving
+            addView(LayoutInflater.from(applicationContext).inflate(R.layout.header_saving, this, false).apply {
+                tv_saving_money.text = SavingDataManager.getSavingMoney(context).toString()
+            })
+
+            // rv
             addView(rvSaving)
         }
 
@@ -73,5 +86,15 @@ class SavingActivity: AppCompatActivity() {
             mSavingAdapter.addItem(Saving("4/$i", "테스트$i", (i+1)*100))
         }
         mSavingAdapter.notifyDataSetChanged()
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem?): Boolean {
+        when(item?.itemId) {
+            android.R.id.home -> {
+                finish()
+            }
+        }
+
+        return super.onOptionsItemSelected(item)
     }
 }

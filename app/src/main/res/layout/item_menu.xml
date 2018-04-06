@@ -1,14 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
-    style="@style/PostPay.Main.Linear">
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="96dp"
+    android:background="@null"
+    android:gravity="center"
+    android:orientation="vertical">
+
     <ImageView
         android:id="@+id/iv_menu_icon"
-        android:background="@drawable/ic_menu1"
-        style="@style/PostPay.Main.ImageView" />
+        android:layout_width="42dp"
+        android:layout_height="42dp"
+        android:background="@drawable/ic_menu1" />
+
     <TextView
         android:id="@+id/tv_menu_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="3dp"
         android:text="@string/main_menu1"
-        style="@style/PostPay.Main.TextView" />
+        android:textSize="12dp" />
 </LinearLayout>

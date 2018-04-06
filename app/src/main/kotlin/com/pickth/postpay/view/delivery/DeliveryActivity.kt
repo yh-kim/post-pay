@@ -18,6 +18,7 @@ package com.pickth.postpay.view.delivery
 
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
+import android.view.MenuItem
 import com.pickth.postpay.R
 import com.pickth.postpay.view.delivery.adapter.ViewPagerAdapter
 import kotlinx.android.synthetic.main.activity_delivery.*
@@ -32,12 +33,25 @@ class DeliveryActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_delivery)
         toolbar_base?.title = "현금배송"
-        toolbar_base.setTitleTextColor(resources.getColor(R.color.colorWhite))
         setSupportActionBar(toolbar_base)
+        supportActionBar?.run {
+            setHomeAsUpIndicator(R.drawable.ic_back)
+            setDisplayHomeAsUpEnabled(true)
+        }
 
 
         val adapter = ViewPagerAdapter(supportFragmentManager)
         vp_delivery.adapter = adapter
 
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem?): Boolean {
+        when(item?.itemId) {
+            android.R.id.home -> {
+                finish()
+            }
+        }
+
+        return super.onOptionsItemSelected(item)
     }
 }

@@ -32,41 +32,56 @@ import com.pickth.postpay.R
 import com.pickth.postpay.extension.convertDpToPixel
 import com.pickth.postpay.extension.setBackgroundColorWithRadius
 import com.ramotion.fluidslider.FluidSlider
+import kotlinx.android.synthetic.main.activity_main.view.*
 import org.jetbrains.anko.*
 
 /**
  * Created by yonghoon on 2018-04-04
  * Blog   : http://blog.pickth.com
  */
-class SavingSettingDialog(context: Context, private var savingValue: Int, private val click:(value: Int) -> Unit): Dialog(context, R.style.AppTheme_NoTitle) {
+class SavingSettingDialog(context: Context, private var savingValue: Int, private val click:(value: Int) -> Unit): Dialog(context) {
     private lateinit var mFluidSlider: FluidSlider
     private var tvInput: TextView? = null
+    private var mSaving = savingValue
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        window.setLayout(WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.MATCH_PARENT)
+        window.run {
+            setLayout(WindowManager.LayoutParams.WRAP_CONTENT, WindowManager.LayoutParams.WRAP_CONTENT)
+            setGravity(Gravity.CENTER)
+            setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE)
+        }
+
         mFluidSlider = FluidSlider(context).apply {
             startText = "0"
             endText = "100"
-            colorBar = ContextCompat.getColor(context, R.color.colorAccent)
-            colorBubble = ContextCompat.getColor(context, R.color.colorWhite)
+            colorBubbleText = ContextCompat.getColor(context, R.color.colorWhite)
+            colorBar = ContextCompat.getColor(context, R.color.colorWhiteDark)
+            colorBubble = ContextCompat.getColor(context, R.color.colorPrimary)
+            colorBarText = ContextCompat.getColor(context, R.color.colorPrimary)
             position = (savingValue * 0.01).toFloat()
             positionListener = {
                 pos -> val value = (100 * pos).toInt()
-                savingValue = value
+                mSaving = value
                 bubbleText = "${value}"
                 tvInput?.text = "${value}%"
             }
         }
 
         setContentView(context.verticalLayout {
-            layoutParams = LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT)
+            layoutParams = LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT)
             val rootPadding = context.convertDpToPixel(9)
             setPadding(rootPadding,0,rootPadding,0)
+            backgroundColor = ContextCompat.getColor(context, R.color.colorPrimaryAccent)
 
             addView(mFluidSlider)
+            textView("드래그하여 %를 선택하세요") {
+                textColor = ContextCompat.getColor(context, R.color.colorWhite)
+                gravity = Gravity.CENTER_HORIZONTAL
+                padding = context.convertDpToPixel(10)
+            }
 
-            tvInput = textView(savingValue.toString()) {
+            tvInput = textView("${savingValue.toString()}%") {
                 layoutParams = LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT).apply {
                     setMargins(0, context.convertDpToPixel(9), 0, context.convertDpToPixel(0))
                 }
@@ -76,24 +91,33 @@ class SavingSettingDialog(context: Context, private var savingValue: Int, privat
 
             textView(context.getString(R.string.saving_explanation)) {
                 layoutParams = LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT, 1f).apply {
-                    setMargins(context.convertDpToPixel(30), context.convertDpToPixel(30), context.convertDpToPixel(30), context.convertDpToPixel(30))
+                    setMargins(context.convertDpToPixel(10), context.convertDpToPixel(20), context.convertDpToPixel(10), context.convertDpToPixel(20))
                 }
-                setPadding(context.convertDpToPixel(12), 0, context.convertDpToPixel(12), 0)
+                backgroundColor = ContextCompat.getColor(context, R.color.colorWhite)
+                setPadding(context.convertDpToPixel(30),context.convertDpToPixel(10),context.convertDpToPixel(30),context.convertDpToPixel(10))
                 gravity = Gravity.CENTER
-            }.setBackgroundColorWithRadius(ContextCompat.getColor(context, R.color.colorWhite), ContextCompat.getColor(context, R.color.colorAccent), context.convertDpToPixel(12))
+            }.setBackgroundColorWithRadius(ContextCompat.getColor(context, R.color.colorWhite), 0, context.convertDpToPixel(4))
 
             button("저장") {
                 layoutParams = LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT).apply {
-                    setMargins(context.convertDpToPixel(30), 0, context.convertDpToPixel(30), context.convertDpToPixel(30))
+                    setMargins(context.convertDpToPixel(70), 0, context.convertDpToPixel(70), context.convertDpToPixel(20))
                 }
+                textColor = ContextCompat.getColor(context, R.color.colorWhite)
 
                 if(Build.VERSION.SDK_INT >= 21) elevation = 0f
 
                 setOnClickListener {
+                    savingValue = mSaving
                     click(savingValue)
                     dismiss()
                 }
-            }.setBackgroundColorWithRadius(ContextCompat.getColor(context, R.color.colorWhite), ContextCompat.getColor(context, R.color.colorAccent), context.convertDpToPixel(12))
+            }.setBackgroundColorWithRadius(ContextCompat.getColor(context, R.color.colorPrimary), 0, context.convertDpToPixel(4))
+
         })
+    }
+
+    override fun dismiss() {
+        mFluidSlider.position = (savingValue*0.01).toFloat()
+        super.dismiss()
     }
 }
