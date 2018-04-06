@@ -1,10 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_height="match_parent"
     android:id="@+id/ll_nav"
     android:layout_width="280dp"
+    android:layout_height="match_parent"
     android:layout_gravity="start"
-    android:background="@color/colorAccent"
+    android:background="@color/colorWhiteGray"
     android:orientation="vertical">
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/rv_main_nav"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.7">
+
+    </android.support.v7.widget.RecyclerView>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.3">
+
+        <TextView
+            android:text="포인트를 넣을까 광고를 넣을까"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />w
+
+    </RelativeLayout>
 
 </LinearLayout>

@@ -31,16 +31,16 @@ class DeliveryOneTimeFragment : Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
-        txt_period_want_date.setOnClickListener { _ ->
-            val dialog = DatePickerFragmentDialog(txt_period_want_date)
+        txt_foreign_want_date.setOnClickListener { _ ->
+            val dialog = DatePickerFragmentDialog(txt_foreign_want_date)
             dialog.show(activity?.fragmentManager, "dialog")
         }
 
-        txt_period_address.setOnClickListener { _ ->
+        txt_foreign_address.setOnClickListener { _ ->
 
         }
 
-        edt_period_send_money.addTextChangedListener(object : TextWatcher {
+        edt_foreign_send_money.addTextChangedListener(object : TextWatcher {
             override fun afterTextChanged(p0: Editable?) {
             }
 
@@ -48,15 +48,15 @@ class DeliveryOneTimeFragment : Fragment() {
             }
 
             override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
-                if (edt_period_send_money.text.toString() != "") {
-                    val value = edt_period_send_money.text.toString().toInt()
+                if (edt_foreign_send_money.text.toString() != "") {
+                    val value = edt_foreign_send_money.text.toString().toInt()
                     val fees: Int = (value * 0.01).toInt()
                     val totalMoney = value + fees
-                    txt_period_sum.text = "${value}원 + 수수료 (${fees}원)"
-                    txt_period_total.text = "총 ${totalMoney}원"
+                    txt_foreign_sum.text = "${value}원 + 수수료 (${fees}원)"
+                    txt_foreign_total.text = "총 ${totalMoney}원"
                 } else {
-                    txt_period_sum.text = "0원 + 수수료 (0원)"
-                    txt_period_total.text = "총 0원"
+                    txt_foreign_sum.text = "0원 + 수수료 (0원)"
+                    txt_foreign_total.text = "총 0원"
                 }
             }
         })

@@ -12,4 +12,7 @@
 
     <string name="nav_open">open</string>
     <string name="nav_close">close</string>
+
+    <string name="receiving_explanation_A">수신건수에는 신규 수신내역과 현금수신 미처리내역이 포함되어 있습니다.</string>
+    <string name="receiving_explanation_B">보내시는 분이 받는 분 본인명의의 휴대전화번호와 실명(성+이름)으로 송금한 건에 대해서만 수신내역 조회 및 받기가 가능합니다.</string>
 </resources>

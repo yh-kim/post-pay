@@ -13,4 +13,6 @@
 
     <color name="colorBackGray">#FFF6F7FB</color>
     <color name="colorIconGray">#F45B4D</color>
+
+    <color name="colorWhiteGray">#EEEEEE</color>
 </resources>

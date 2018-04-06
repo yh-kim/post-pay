@@ -5,7 +5,7 @@
     android:layout_height="match_parent">
 
     <RelativeLayout
-        android:id="@+id/layout_period_theme_A"
+        android:id="@+id/layout_foreign_theme_A"
         android:layout_width="match_parent"
         android:layout_height="64dp"
         android:background="@color/colorWhiteGray"
@@ -45,10 +45,10 @@
     </RelativeLayout>
 
     <com.rengwuxian.materialedittext.MaterialEditText
-        android:id="@+id/edt_period_receiver"
+        android:id="@+id/edt_foreign_receiver"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/layout_period_theme_A"
+        android:layout_below="@id/layout_foreign_theme_A"
         android:layout_marginLeft="4dp"
         android:layout_marginRight="4dp"
         android:layout_marginTop="8dp"
@@ -59,10 +59,10 @@
         app:met_floatingLabel="highlight" />
 
     <com.rengwuxian.materialedittext.MaterialEditText
-        android:id="@+id/edt_period_send_money"
+        android:id="@+id/edt_foreign_send_money"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/edt_period_receiver"
+        android:layout_below="@id/edt_foreign_receiver"
         android:layout_marginLeft="4dp"
         android:layout_marginRight="4dp"
         android:layout_marginTop="8dp"
@@ -75,10 +75,10 @@
         app:met_floatingLabel="highlight" />
 
     <TextView
-        android:id="@+id/txt_period_want_date"
+        android:id="@+id/txt_foreign_want_date"
         android:layout_width="match_parent"
         android:layout_height="36dp"
-        android:layout_below="@id/edt_period_send_money"
+        android:layout_below="@id/edt_foreign_send_money"
         android:layout_gravity="center"
         android:layout_marginLeft="4dp"
         android:layout_marginRight="4dp"
@@ -89,10 +89,10 @@
         android:textSize="24sp" />
 
     <com.rengwuxian.materialedittext.MaterialEditText
-        android:id="@+id/txt_period_address"
+        android:id="@+id/txt_foreign_address"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/txt_period_want_date"
+        android:layout_below="@id/txt_foreign_want_date"
         android:layout_marginLeft="4dp"
         android:layout_marginRight="4dp"
         android:gravity="center_vertical"
@@ -102,10 +102,10 @@
         app:met_floatingLabel="highlight" />
 
     <RelativeLayout
-        android:id="@+id/layout_period_theme_B"
+        android:id="@+id/layout_foreign_theme_B"
         android:layout_width="match_parent"
         android:layout_height="64dp"
-        android:layout_below="@id/txt_period_address"
+        android:layout_below="@id/txt_foreign_address"
         android:layout_marginTop="8dp"
         android:background="@color/colorWhiteGray"
         android:orientation="horizontal"
@@ -142,18 +142,18 @@
     </RelativeLayout>
 
     <android.support.v7.widget.AppCompatCheckBox
-        android:id="@+id/cb_period_send_message"
+        android:id="@+id/cb_foreign_send_message"
         android:layout_width="wrap_content"
         android:layout_height="24dp"
-        android:layout_below="@id/layout_period_theme_B"
+        android:layout_below="@id/layout_foreign_theme_B"
         android:layout_marginTop="16dp"
         android:text="메시지 보내기" />
 
     <android.support.v7.widget.AppCompatCheckBox
-        android:id="@+id/cb_period_want_certificate"
+        android:id="@+id/cb_foreign_want_certificate"
         android:layout_width="wrap_content"
         android:layout_height="24dp"
-        android:layout_below="@id/cb_period_send_message"
+        android:layout_below="@id/cb_foreign_send_message"
         android:layout_gravity="center_horizontal"
         android:text="배달 증명 신청" />
 
@@ -169,7 +169,7 @@
             android:background="@color/colorBlack" />
 
         <TextView
-            android:id="@+id/txt_period_sum"
+            android:id="@+id/txt_foreign_sum"
             android:layout_width="match_parent"
             android:layout_height="36dp"
             android:gravity="center"
@@ -182,7 +182,7 @@
             android:background="@color/colorBlack" />
 
         <TextView
-            android:id="@+id/txt_period_total"
+            android:id="@+id/txt_foreign_total"
             android:layout_width="match_parent"
             android:layout_height="36dp"
             android:gravity="center"
@@ -190,12 +190,12 @@
             android:textAlignment="center" />
 
         <Button
-            android:id="@+id/btn_period_payment"
+            android:id="@+id/btn_foreign_payment"
             android:layout_width="match_parent"
             android:layout_height="48dp"
             android:background="@color/colorRed"
             android:text="송금하기"
-            android:textColor="@color/colorWhite"
+            android:textColor="@color/colorPrimary"
             android:textStyle="bold" />
 
     </LinearLayout>

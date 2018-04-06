@@ -50,7 +50,6 @@ dependencies {
     // ui
     implementation 'com.ramotion.fluidslider:fluid-slider:0.2.0'
 
-    // datepicker
-    implementation 'com.leavjenn.smoothdaterangepicker:library:0.2.0'
-
+    // image slider
+    implementation 'com.pickth:imageslider:1.0.13'
 }

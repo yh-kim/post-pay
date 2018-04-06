@@ -16,9 +16,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".view.saving.SavingActivity"/>
-        <activity android:name=".view.delivery.DeliveryActivity"/>
-        <activity android:name=".view.sending.SendingActivity"/>
+        <activity android:name=".view.saving.SavingActivity" />
+        <activity android:name=".view.delivery.DeliveryActivity" />
+        <activity android:name=".view.sending.SendingActivity" />
+        <activity android:name=".view.receiving.ReceivingActivity" />
     </application>
 
 </manifest>
