@@ -30,13 +30,13 @@ fun View.setBackgroundColorWithRadius(backgroundColor: Int, strokeColor: Int, dp
     if(Build.VERSION.SDK_INT >= 16) {
         background = GradientDrawable().apply {
             setColor(backgroundColor)
-            setStroke(1, strokeColor)
+            setStroke(context.convertDpToPixel(1), strokeColor)
             cornerRadius = context.convertDpToPixel(dpValue.toFloat())
         }
     } else {
         backgroundDrawable = GradientDrawable().apply {
             setColor(backgroundColor)
-            setStroke(1, strokeColor)
+            setStroke(context.convertDpToPixel(1), strokeColor)
             cornerRadius = context.convertDpToPixel(dpValue.toFloat())
         }
     }

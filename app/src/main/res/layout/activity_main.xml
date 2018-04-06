@@ -30,6 +30,7 @@
                     android:clickable="false"
                     android:focusable="false"
                     android:textStyle="bold"
+                    android:textSize="20dp"
                     android:longClickable="false"
                     android:text="Post Pay" />
             </android.support.v7.widget.Toolbar>
@@ -77,8 +78,8 @@
 
                     <ImageView
                         android:id="@+id/iv_saving_setting"
-                        android:layout_width="18dp"
-                        android:layout_height="18dp"
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
                         android:layout_gravity="end|top"
                         android:layout_marginEnd="6dp"
                         android:layout_marginTop="6dp"
@@ -93,135 +94,20 @@
                 android:background="@drawable/ic_money" />
         </FrameLayout>
 
-        <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1" />
 
         <android.support.v7.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="80dp"
+            android:layout_marginTop="52dp"
             android:layout_marginEnd="18dp"
             android:layout_marginStart="18dp"
             app:cardCornerRadius="4dp">
 
-            <LinearLayout
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/rv_main_menu"
+                android:overScrollMode="never"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center_horizontal"
-                android:orientation="vertical">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="center_vertical"
-                    android:orientation="horizontal"
-                    android:weightSum="3">
-
-                    <LinearLayout
-                        android:orientation="vertical"
-                        style="@style/PostPay.Main.Linear">
-                        <ImageView
-                            android:background="@drawable/ic_menu1"
-                            style="@style/PostPay.Main.ImageView" />
-                        <TextView
-                            android:text="@string/main_menu1"
-                            style="@style/PostPay.Main.TextView" />
-                    </LinearLayout>
-
-                    <View
-                        android:layout_width="1px"
-                        android:layout_height="80dp"
-                        android:background="@color/colorBlack" />
-
-                    <LinearLayout
-                        android:orientation="vertical"
-                        style="@style/PostPay.Main.Linear">
-                        <ImageView
-                            android:background="@drawable/ic_menu2"
-                            style="@style/PostPay.Main.ImageView" />
-                        <TextView
-                            android:text="@string/main_menu2"
-                            style="@style/PostPay.Main.TextView" />
-                    </LinearLayout>
-
-                    <View
-                        android:layout_width="1px"
-                        android:layout_height="80dp"
-                        android:background="@color/colorBlack" />
-
-                    <LinearLayout
-                        android:orientation="vertical"
-                        style="@style/PostPay.Main.Linear">
-                        <ImageView
-                            android:background="@drawable/ic_menu3"
-                            style="@style/PostPay.Main.ImageView" />
-                        <TextView
-                            android:text="@string/main_menu3"
-                            style="@style/PostPay.Main.TextView" />
-                    </LinearLayout>
-                </LinearLayout>
-
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="1px"
-                    android:layout_marginEnd="6dp"
-                    android:layout_marginStart="6dp"
-                    android:background="@color/colorBlack" />
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="center_vertical"
-                    android:orientation="horizontal"
-                    android:weightSum="3">
-
-                    <LinearLayout
-                        android:orientation="vertical"
-                        style="@style/PostPay.Main.Linear">
-                        <ImageView
-                            android:background="@drawable/ic_menu4"
-                            style="@style/PostPay.Main.ImageView" />
-                        <TextView
-                            android:text="@string/main_menu4"
-                            style="@style/PostPay.Main.TextView" />
-                    </LinearLayout>
-
-                    <View
-                        android:layout_width="1px"
-                        android:layout_height="80dp"
-                        android:background="@color/colorBlack" />
-
-                    <LinearLayout
-                        android:orientation="vertical"
-                        style="@style/PostPay.Main.Linear">
-                        <ImageView
-                            android:background="@drawable/ic_menu5"
-                            style="@style/PostPay.Main.ImageView" />
-                        <TextView
-                            android:text="@string/main_menu5"
-                            style="@style/PostPay.Main.TextView" />
-                    </LinearLayout>
-
-                    <View
-                        android:layout_width="1px"
-                        android:layout_height="80dp"
-                        android:background="@color/colorBlack" />
-
-                    <LinearLayout
-                        android:id="@+id/ll_start_delivery"
-                        android:orientation="vertical"
-                        style="@style/PostPay.Main.Linear">
-                        <ImageView
-                            android:background="@drawable/ic_menu6"
-                            style="@style/PostPay.Main.ImageView" />
-                        <TextView
-                            android:text="@string/main_menu6"
-                            style="@style/PostPay.Main.TextView" />
-                    </LinearLayout>
-                </LinearLayout>
-            </LinearLayout>
+                android:layout_height="wrap_content" />
 
         </android.support.v7.widget.CardView>
     </LinearLayout>

@@ -18,6 +18,7 @@ package com.pickth.postpay.view.dialog
 
 import android.app.Dialog
 import android.content.Context
+import android.os.Build
 import android.os.Bundle
 import android.support.v4.content.ContextCompat
 import android.text.InputType
@@ -49,7 +50,7 @@ class SavingSettingDialog(context: Context, private var savingValue: Int, privat
             endText = "100"
             colorBar = ContextCompat.getColor(context, R.color.colorAccent)
             colorBubble = ContextCompat.getColor(context, R.color.colorWhite)
-            position = savingValue.toFloat()
+            position = (savingValue * 0.01).toFloat()
             positionListener = {
                 pos -> val value = (100 * pos).toInt()
                 savingValue = value
@@ -85,6 +86,9 @@ class SavingSettingDialog(context: Context, private var savingValue: Int, privat
                 layoutParams = LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT).apply {
                     setMargins(context.convertDpToPixel(30), 0, context.convertDpToPixel(30), context.convertDpToPixel(30))
                 }
+
+                if(Build.VERSION.SDK_INT >= 21) elevation = 0f
+
                 setOnClickListener {
                     click(savingValue)
                     dismiss()

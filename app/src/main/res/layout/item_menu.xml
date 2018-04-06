@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    style="@style/PostPay.Main.Linear">
+    <ImageView
+        android:id="@+id/iv_menu_icon"
+        android:background="@drawable/ic_menu1"
+        style="@style/PostPay.Main.ImageView" />
+    <TextView
+        android:id="@+id/tv_menu_name"
+        android:text="@string/main_menu1"
+        style="@style/PostPay.Main.TextView" />
+</LinearLayout>
