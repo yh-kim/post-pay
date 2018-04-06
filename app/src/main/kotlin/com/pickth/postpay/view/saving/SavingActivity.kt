@@ -23,6 +23,7 @@ import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
 import android.view.Gravity
 import android.view.LayoutInflater
+import android.view.MenuItem
 import android.view.View
 import android.widget.LinearLayout.LayoutParams
 import com.pickth.postpay.R
@@ -65,6 +66,10 @@ class SavingActivity: AppCompatActivity() {
             baseToolbar.toolbar_base.setTitle("저축내역")
             addView(baseToolbar)
             setSupportActionBar(baseToolbar.toolbar_base)
+            supportActionBar?.run {
+                setHomeAsUpIndicator(R.drawable.ic_back)
+                setDisplayHomeAsUpEnabled(true)
+            }
 
             // saving
             addView(LayoutInflater.from(applicationContext).inflate(R.layout.header_saving, this, false).apply {
@@ -81,5 +86,15 @@ class SavingActivity: AppCompatActivity() {
             mSavingAdapter.addItem(Saving("4/$i", "테스트$i", (i+1)*100))
         }
         mSavingAdapter.notifyDataSetChanged()
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem?): Boolean {
+        when(item?.itemId) {
+            android.R.id.home -> {
+                finish()
+            }
+        }
+
+        return super.onOptionsItemSelected(item)
     }
 }

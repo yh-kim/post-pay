@@ -2,6 +2,7 @@ package com.pickth.postpay.view.sending
 
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
+import android.view.MenuItem
 import android.view.View
 import android.widget.Toast
 import com.pickth.postpay.R
@@ -22,6 +23,10 @@ class SendingActivity : AppCompatActivity() {
         // actionbar
         toolbar_base.setTitle("간편송금")
         setSupportActionBar(toolbar_base)
+        supportActionBar?.run {
+            setHomeAsUpIndicator(R.drawable.ic_back)
+            setDisplayHomeAsUpEnabled(true)
+        }
 
         btn_sending.setOnClickListener {
             val per = SavingDataManager.getSavingPercentage(this)
@@ -35,5 +40,15 @@ class SendingActivity : AppCompatActivity() {
                 finish()
             }
         }
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem?): Boolean {
+        when(item?.itemId) {
+            android.R.id.home -> {
+                finish()
+            }
+        }
+
+        return super.onOptionsItemSelected(item)
     }
 }
