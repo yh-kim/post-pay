@@ -13,5 +13,6 @@
         <item name="windowNoTitle">true</item>
         <item name="android:actionBarSize">49dp</item>
         <item name="actionBarSize">49dp</item>
+        <item name="drawerArrowStyle">@style/DrawerArrowStyle</item>
     </style>
 </resources>
