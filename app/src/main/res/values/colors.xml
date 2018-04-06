@@ -11,4 +11,5 @@
 
     <color name="colorBackGray">#FFF6F7FB</color>
     <color name="colorIconGray">#FF484848</color>
+    <color name="colorWhiteGray">#ffeeeeee</color>
 </resources>

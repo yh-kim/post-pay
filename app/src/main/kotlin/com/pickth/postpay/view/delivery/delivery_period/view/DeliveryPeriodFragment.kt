@@ -5,6 +5,7 @@ import android.support.v4.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.pickth.postpay.R
 import org.jetbrains.anko.support.v4.UI
 import org.jetbrains.anko.verticalLayout
 
@@ -25,11 +26,7 @@ class DeliveryPeriodFragment : Fragment() {
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        return UI {
-            verticalLayout{
-
-            }
-        }.view
+        return inflater.inflate(R.layout.fragment_delivery_period,container, false)
     }
 
 

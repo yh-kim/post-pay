@@ -45,6 +45,12 @@ dependencies {
     implementation "org.jetbrains.anko:anko-sdk25:${versions.anko}"
     implementation "org.jetbrains.anko:anko-appcompat-v7:${versions.anko}"
 
+    implementation 'com.rengwuxian.materialedittext:library:2.1.4'
+
     // ui
     implementation 'com.ramotion.fluidslider:fluid-slider:0.2.0'
+
+    // datepicker
+    implementation 'com.leavjenn.smoothdaterangepicker:library:0.2.0'
+
 }

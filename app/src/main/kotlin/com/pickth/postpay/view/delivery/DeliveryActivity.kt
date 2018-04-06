@@ -31,8 +31,10 @@ class DeliveryActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_delivery)
-
+        toolbar_base?.title = "현금배송"
+        toolbar_base.setTitleTextColor(resources.getColor(R.color.colorWhite))
         setSupportActionBar(toolbar_base)
+
 
         val adapter = ViewPagerAdapter(supportFragmentManager)
         vp_delivery.adapter = adapter
