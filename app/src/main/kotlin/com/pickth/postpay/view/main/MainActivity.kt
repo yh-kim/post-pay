@@ -6,15 +6,20 @@ import android.os.Bundle
 import android.support.v4.view.GravityCompat
 import android.support.v7.app.ActionBarDrawerToggle
 import android.support.v7.app.AppCompatActivity
+import android.support.v7.widget.GridLayoutManager
+import android.support.v7.widget.LinearLayoutManager
 import android.view.MenuItem
 import com.pickth.postpay.R
+import com.pickth.postpay.utils.GridSpacingItemDecoration
 import com.pickth.postpay.view.delivery.DeliveryActivity
 import com.pickth.postpay.view.dialog.SavingSettingDialog
+import com.pickth.postpay.view.main.adapter.MenuAdapter
 import com.pickth.postpay.view.saving.SavingActivity
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.base_toolbar.*
 import kotlinx.android.synthetic.main.view_navigation.*
 import org.jetbrains.anko.startActivity
+import org.jetbrains.anko.switch
 import org.jetbrains.anko.toast
 
 class MainActivity : AppCompatActivity(), MainContract.View {
@@ -38,9 +43,18 @@ class MainActivity : AppCompatActivity(), MainContract.View {
         updateUi()
         mSavingSettingDialog = SavingSettingDialog(this, mPresenter.getSavingPercentage(), { mPresenter.setSavingPercentage(it) })
 
-        ll_start_delivery.setOnClickListener {
-            startActivity<DeliveryActivity>()
+        rv_main_menu.run {
+            adapter = MenuAdapter({
+                when(it) {
+                    5 -> {
+                        startActivity<DeliveryActivity>()
+                    }
+                }
+            })
+            layoutManager = GridLayoutManager(context, 3)
+            addItemDecoration(GridSpacingItemDecoration(context, 3, 1, false))
         }
+
         cv_start_saving.setOnClickListener {
             startActivity<SavingActivity>()
         }
