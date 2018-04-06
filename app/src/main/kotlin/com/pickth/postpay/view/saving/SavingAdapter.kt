@@ -16,14 +16,17 @@
 
 package com.pickth.postpay.view.saving
 
+import android.support.v4.content.ContextCompat
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.pickth.postpay.R
+import com.pickth.postpay.extension.convertDpToPixel
 import kotlinx.android.synthetic.main.item_saving.view.*
 import org.jetbrains.anko.backgroundDrawable
 import org.jetbrains.anko.backgroundResource
+import org.jetbrains.anko.textColor
 import java.util.ArrayList
 
 /**
@@ -54,7 +57,15 @@ class SavingAdapter: RecyclerView.Adapter<SavingAdapter.SavingViewHolder>() {
                 iv_saving_icon.backgroundResource = saving.image
                 saving_date.text = saving.date
                 saving_name.text = saving.name
-                saving_price.text = saving.price.toString()
+                saving_price.text = "+${saving.price.toString()}"
+                if(saving.price >= 1000) {
+                    saving_price.run {
+                        textColor = ContextCompat.getColor(context, R.color.colorPrimaryAccent)
+                        textSize = context.convertDpToPixel(7).toFloat()
+                    }
+                } else {
+                    saving_price.textSize = context.convertDpToPixel(5).toFloat()
+                }
             }
         }
     }

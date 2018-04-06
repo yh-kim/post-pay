@@ -59,6 +59,7 @@ class SavingActivity: AppCompatActivity() {
             adapter = mSavingAdapter
             addItemDecoration(LinearSpacingItemDecoration(context, 4, false))
             layoutManager = LinearLayoutManager(this@SavingActivity, LinearLayoutManager.VERTICAL, false)
+            recycledViewPool.setMaxRecycledViews(0, 0)
         }
 
 
