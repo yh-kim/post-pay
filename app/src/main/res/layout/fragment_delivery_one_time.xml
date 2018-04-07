@@ -142,7 +142,7 @@
     </RelativeLayout>
 
     <android.support.v7.widget.AppCompatCheckBox
-        android:id="@+id/cb_foreign_send_message"
+        android:id="@+id/cb_one_time_send_message"
         android:layout_width="wrap_content"
         android:layout_height="24dp"
         android:layout_below="@id/layout_foreign_theme_B"
@@ -150,12 +150,27 @@
         android:text="메시지 보내기" />
 
     <android.support.v7.widget.AppCompatCheckBox
-        android:id="@+id/cb_foreign_want_certificate"
+        android:id="@+id/cb_one_time_want_certificate"
         android:layout_width="wrap_content"
         android:layout_height="24dp"
-        android:layout_below="@id/cb_foreign_send_message"
+        android:layout_below="@id/cb_one_time_send_message"
         android:layout_gravity="center_horizontal"
         android:text="배달 증명 신청" />
+
+    <android.support.v7.widget.AppCompatCheckBox
+        android:id="@+id/cb_one_time_div_cash"
+        android:layout_width="wrap_content"
+        android:layout_height="24dp"
+        android:layout_below="@id/cb_one_time_want_certificate"
+        android:text="권종선택" />
+
+    <TextView
+        android:id="@+id/txt_one_time_div_cash_result"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/cb_one_time_div_cash"
+        android:layout_marginLeft="16dp"
+        android:textSize="16sp" />
 
     <LinearLayout
         android:layout_width="match_parent"

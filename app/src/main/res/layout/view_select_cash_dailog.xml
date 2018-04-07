@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:padding="8dp">
+
+    <TextView
+        android:id="@+id/txt_select_cash_money"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="24sp" />
+
+    <LinearLayout
+        android:id="@+id/layout_select_cash_one"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/txt_select_cash_money"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:text="1000원" />
+
+        <EditText
+            android:id="@+id/edt_select_cash_one"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_marginLeft="16dp"
+            android:background="@drawable/round_corner_white"
+            android:inputType="number"
+            android:text="0"
+            android:textAlignment="center" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="개" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/layout_select_cash_five"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/layout_select_cash_one"
+        android:layout_marginTop="8dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:text="5000원" />
+
+        <EditText
+            android:id="@+id/edt_select_cash_five"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_marginLeft="16dp"
+            android:background="@drawable/round_corner_white"
+            android:inputType="number"
+            android:text="0"
+            android:textAlignment="center" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="개" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/layout_select_cash_ten"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/layout_select_cash_five"
+        android:layout_marginTop="8dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:text="10000원" />
+
+        <EditText
+            android:id="@+id/edt_select_cash_ten"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_marginLeft="16dp"
+            android:background="@drawable/round_corner_white"
+            android:inputType="number"
+            android:text="0"
+            android:textAlignment="center" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="개" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/layout_select_cash_fifty"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/layout_select_cash_ten"
+        android:layout_marginTop="8dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:text="50000원" />
+
+        <EditText
+            android:id="@+id/edt_select_cash_fifty"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_marginLeft="16dp"
+            android:background="@drawable/round_corner_white"
+            android:inputType="number"
+            android:text="0"
+            android:textAlignment="center" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="개" />
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/btn_select_cash_ok"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/layout_select_cash_fifty"
+        android:text="확인" />
+
+    <Button
+        android:id="@+id/btn_select_cash_cancel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/layout_select_cash_fifty"
+        android:layout_toRightOf="@id/btn_select_cash_ok"
+        android:text="취소" />
+
+</RelativeLayout>
